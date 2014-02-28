@@ -2,6 +2,7 @@
 
 A tiny client for the [Cover Art Archive](http://coverartarchive.org) web service.
 
+[![Gem Version](https://badge.fury.io/rb/coverart.png)](http://badge.fury.io/rb/coverart)
 
 ### Ruby Version
 
