@@ -1,7 +1,12 @@
 module CoverArt
   class Client
-    def http
-      @http ||= Faraday.new url: 'http://coverartarchive.org'
+    attr_reader :http
+
+    def initialize &block
+      @http ||= Faraday.new url: 'http://coverartarchive.org' do |f|
+        yield f if block_given?
+        f.adapter Faraday.default_adapter
+      end
     end
 
     def get url
@@ -17,7 +22,7 @@ module CoverArt
           get response.headers[:location]
         end
       else
-        raise "Unexpected response (#{ response.status }) at #{ location }"
+        raise "Unexpected response (#{ response.status }) at #{ url }"
       end
     end
 

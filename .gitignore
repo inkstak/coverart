@@ -1,2 +1,4 @@
 *.gem
+local.rb
 Gemfile.lock
+tmp

@@ -36,6 +36,28 @@ You can also use shortcuts :
     api.group '76df3287-6cda-33eb-8e9a-044b5e15ffdd'
 
 
+### Caching & middlewares
+
+In order to perform caching, you can use [faraday_middleware](http://github.com/lostisland/faraday_middleware) or your owns :
+
+    # Please note that faraday_middleware and active_support are not included as dependencies
+    # you may install them
+
+    require 'coverart'
+    require 'faraday_middleware'
+    require 'active_support'
+
+    api = CoverArt::Client.new do |f|
+      f.response :caching do
+        ActiveSupport::Cache.lookup_store :file_store, './tmp/cache', namespace: 'covertart', expires_in: 3600
+      end
+    end
+
+
+
+Faraday middleware
+
+
 ## Contributing
 
 1. Fork it

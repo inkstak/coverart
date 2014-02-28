@@ -14,6 +14,5 @@ Gem::Specification.new do |s|
   s.files         = %w(Gemfile LICENSE README.md coverart.gemspec)
   s.files        += Dir.glob('lib/**/*')
 
-  s.add_dependency             'faraday'
-  s.add_development_dependency 'awesome_print'
+  s.add_dependency 'faraday'
 end
