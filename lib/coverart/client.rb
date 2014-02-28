@@ -1,9 +1,11 @@
 module CoverArt
   class Client
+    ENDPOINT = 'http://coverartarchive.org'
+
     attr_reader :http
 
     def initialize &block
-      @http ||= Faraday.new url: 'http://coverartarchive.org' do |f|
+      @http ||= Faraday.new url: ENDPOINT do |f|
         yield f if block_given?
         f.adapter Faraday.default_adapter
       end
