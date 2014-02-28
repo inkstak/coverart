@@ -38,7 +38,8 @@ You can also use shortcuts :
 
 ### Caching & middlewares
 
-In order to perform caching, you can use [faraday_middleware](http://github.com/lostisland/faraday_middleware) or your owns :
+In order to perform caching, you can use [faraday_middleware](http://github.com/lostisland/faraday_middleware)
+or your own middlewares:
 
     # Please note that faraday_middleware and active_support are not included as dependencies
     # you may install them
@@ -52,10 +53,6 @@ In order to perform caching, you can use [faraday_middleware](http://github.com/
         ActiveSupport::Cache.lookup_store :file_store, './tmp/cache', namespace: 'covertart', expires_in: 3600
       end
     end
-
-
-
-Faraday middleware
 
 
 ## Contributing
