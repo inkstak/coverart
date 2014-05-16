@@ -2,7 +2,7 @@
 
 A tiny client for the [Cover Art Archive](http://coverartarchive.org) web service.
 
-It works great with the [Musicbrainz clien](https://github.com/inkstak/coverart).
+It works great with the [Musicbrainz client](http://github.com/inkstak/musicbrainz).
 
 [![Build Status](https://travis-ci.org/inkstak/coverart.svg)](https://travis-ci.org/inkstak/coverart)
 [![Gem Version](https://badge.fury.io/rb/coverart.png)](http://badge.fury.io/rb/coverart)
