@@ -28,37 +28,81 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="cover-art" class="anchor" href="#cover-art"><span class="octicon octicon-link"></span></a>Cover Art</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>A tiny client for the <a href="http://coverartarchive.org">Cover Art Archive</a> web service.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>It works great with the <a href="http://github.com/inkstak/musicbrainz">Musicbrainz client</a>.</p>
+
+<p><a href="https://travis-ci.org/inkstak/coverart"><img src="https://travis-ci.org/inkstak/coverart.svg" alt="Build Status"></a>
+<a href="http://badge.fury.io/rb/coverart"><img src="https://badge.fury.io/rb/coverart.png" alt="Gem Version"></a></p>
+
+<h3>
+<a name="ruby-version" class="anchor" href="#ruby-version"><span class="octicon octicon-link"></span></a>Ruby Version</h3>
+
+<p>Ruby version 1.9.0+ required.</p>
+
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Is this really necessary to explain ?</p>
+
+<pre><code>gem install coverart
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Read the <a href="http://wiki.musicbrainz.org/Cover_Art_Archive/API">JSON API manual</a></p>
+
+<pre><code>require 'coverart'
+api = CoverArt::Client.new
+api.get '/release/76df3287-6cda-33eb-8e9a-044b5e15ffdd'
+</code></pre>
+
+<p>You can also use shortcuts :</p>
+
+<pre><code># Get the front image URL
+api.front '76df3287-6cda-33eb-8e9a-044b5e15ffdd'
+
+# Get the back image URL
+api.back '99b09d02-9cc9-3fed-8431-f162165a9371'
+
+# Get the front image URL for a release group
+api.group '76df3287-6cda-33eb-8e9a-044b5e15ffdd'
+</code></pre>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="caching--middlewares" class="anchor" href="#caching--middlewares"><span class="octicon octicon-link"></span></a>Caching &amp; middlewares</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>In order to perform caching, you can use <a href="http://github.com/lostisland/faraday_middleware">faraday_middleware</a>
+or your own middlewares:</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<pre><code># Please note that faraday_middleware and active_support are not included as dependencies
+# you may install them
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+require 'coverart'
+require 'faraday_middleware'
+require 'active_support'
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+api = CoverArt::Client.new do |f|
+  f.response :caching do
+    ActiveSupport::Cache.lookup_store :file_store, './tmp/cache', namespace: 'covertart', expires_in: 3600
+  end
+end
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/inkstak">inkstak</a></p>
