@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files         = Dir["lib/**/*"] + %w[LICENSE README.md]
   s.require_paths = ["lib"]
 
-  s.add_dependency "faraday"
+  s.add_dependency "faraday", "~> 2.5"
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "gem-release"
