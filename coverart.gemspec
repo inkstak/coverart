@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "faraday"
 
   s.add_development_dependency "bundler"
+  s.add_development_dependency "gem-release"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
   s.add_development_dependency "rubocop"
