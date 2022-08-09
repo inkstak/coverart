@@ -31,7 +31,7 @@ describe CoverArt::Client do
     context 'with invalid UUID' do
       before { stub_get '/release/mdib', status: 400, body: fixture('400.html') }
 
-      it { expect{ api.get '/release/mdib' }.to raise_error }
+      it { expect{ api.get '/release/mdib' }.to raise_error("Unexpected response (400) at /release/mdib") }
     end
   end
 
@@ -52,7 +52,7 @@ describe CoverArt::Client do
     context 'with invalid UUID' do
       before { stub_get '/release/mdib/front', status: 400, body: fixture('400.html') }
 
-      it { expect{ api.front 'mdib/front' }.to raise_error }
+      it { expect{ api.front 'mdib' }.to raise_error("Unexpected response (400) at /release/mdib/front") }
     end
   end
 
@@ -73,7 +73,7 @@ describe CoverArt::Client do
     context 'with invalid UUID' do
       before { stub_get '/release/mdib/back', status: 400, body: fixture('400.html') }
 
-      it { expect{ api.back 'mdib/back' }.to raise_error }
+      it { expect{ api.back 'mdib' }.to raise_error("Unexpected response (400) at /release/mdib/back") }
     end
   end
 
@@ -94,7 +94,7 @@ describe CoverArt::Client do
     context 'with invalid UUID' do
       before { stub_get '/release-group/mdib/front', status: 400, body: fixture('400.html') }
 
-      it { expect{ api.group 'mdib/back' }.to raise_error }
+      it { expect{ api.group 'mdib' }.to raise_error("Unexpected response (400) at /release-group/mdib/front") }
     end
   end
 end
