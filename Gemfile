@@ -1,5 +1,4 @@
-source 'https://rubygems.org'
-gemspec
+# frozen_string_literal: true
 
-gem 'rspec'
-gem 'webmock'
+source "https://rubygems.org"
+gemspec
