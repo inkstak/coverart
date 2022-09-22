@@ -4,8 +4,10 @@ require "bundler/setup"
 Bundler.setup
 
 require "coverart"
+require "simplecov"
 require "webmock/rspec"
 
+SimpleCov.start
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|

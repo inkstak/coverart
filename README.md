@@ -7,7 +7,7 @@ It works great with the [Musicbrainz client](http://github.com/inkstak/musicbrai
 [![Gem Version](https://badge.fury.io/rb/coverart.svg)](https://rubygems.org/gems/coverart)
 [![CI Status](https://github.com/inkstak/coverart/actions/workflows/ci.yml/badge.svg)](https://github.com/inkstak/coverart/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9bb8b75ea8c66b1a9c94/maintainability)](https://codeclimate.com/github/inkstak/coverart/maintainability)
-
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9bb8b75ea8c66b1a9c94/test_coverage)](https://codeclimate.com/github/inkstak/coverart/test_coverage)
 
 ### Installation
 
