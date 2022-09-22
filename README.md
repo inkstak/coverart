@@ -80,8 +80,6 @@ Both can be run with:
 bundle exec rake
 ```
 
-Rubocop uses [Standard](https://github.com/testdouble/standard) cops
-
 ## License & credits
 
 Please see [LICENSE](https://github.com/inkstak/coverart/blob/main/LICENSE) for further details.

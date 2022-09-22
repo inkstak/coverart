@@ -20,10 +20,10 @@ RSpec.describe Coverart::Client do
     context "with multiple redirections" do
       before do
         stub_client_request("/release/#{uuid}")
-          .to_return(status: 307, headers: { "Location" => "http://coverartarchive.org/mbid-#{uuid}/index.json" })
+          .to_return(status: 307, headers: {"Location" => "http://coverartarchive.org/mbid-#{uuid}/index.json"})
 
         stub_client_request("/mbid-#{uuid}/index.json")
-          .to_return(status: 302, headers: { "Location" => "http://coverartarchive.org/items/mbid-#{uuid}/index.json" })
+          .to_return(status: 302, headers: {"Location" => "http://coverartarchive.org/items/mbid-#{uuid}/index.json"})
 
         stub_client_request("/items/mbid-#{uuid}/index.json")
           .to_return(status: 200, body: fixture("release.json"))
@@ -53,7 +53,7 @@ RSpec.describe Coverart::Client do
   describe "#front" do
     context "with standard redirections" do
       before do
-        stub_client_request("/release/#{uuid}/front").to_return(status: 307, headers: { "Location" => "http://archive.org/download/mbid.jpg" })
+        stub_client_request("/release/#{uuid}/front").to_return(status: 307, headers: {"Location" => "http://archive.org/download/mbid.jpg"})
       end
 
       it { expect(client.front(uuid)).to be_a(String) }
@@ -80,7 +80,7 @@ RSpec.describe Coverart::Client do
   describe "#back" do
     context "with standard redirections" do
       before do
-        stub_client_request("/release/#{uuid}/back").to_return(status: 307, headers: { "Location" => "http://archive.org/download/mbid.jpg" })
+        stub_client_request("/release/#{uuid}/back").to_return(status: 307, headers: {"Location" => "http://archive.org/download/mbid.jpg"})
       end
 
       it { expect(client.back(uuid)).to be_a(String) }
@@ -107,7 +107,7 @@ RSpec.describe Coverart::Client do
   describe "#group" do
     context "with standard redirections" do
       before do
-        stub_client_request("/release-group/#{uuid}/front").to_return(status: 307, headers: { "Location" => "http://archive.org/download/mbid.jpg" })
+        stub_client_request("/release-group/#{uuid}/front").to_return(status: 307, headers: {"Location" => "http://archive.org/download/mbid.jpg"})
       end
 
       it { expect(client.group(uuid)).to be_a(String) }

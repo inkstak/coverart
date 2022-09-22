@@ -16,9 +16,3 @@ AllCops:
   Exclude:
     - '**/tmp/**/*'
     - '**/vendor/**/*'
-
-Layout/ExtraSpacing:
-  AllowForAlignment: true
-
-Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: space
